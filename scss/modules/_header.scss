@@ -1,0 +1,44 @@
+.header {
+    display: flex;
+    height: 10vh;
+    justify-content: space-between;
+    background-color: $color-primario;
+    box-shadow: $box-shadow;
+    span {
+        color: $color-claro;
+    }
+    &_Title{
+        margin-left: 5%;
+        @include flex-center;
+        font-size: 16px;
+        font-weight: 600;
+    }
+    &_Mode{
+        display: flex;
+        width: 100px;
+        margin-right: 5%;
+        align-items: center;
+        justify-content: flex-end;
+        cursor: pointer;
+        i {
+            margin-right: 8%;
+            color: $color-claro;
+            font-size: 11px;
+        }
+        span {
+            font-size: 13px;
+        }
+    }
+}
+
+.header.mode-White {
+    background-color: $color-blanco;
+    span {
+        font-weight: 600;
+        color: $color-variacion-oscura;
+    }
+}
+
+.far.fa-moon {
+    color: $color-variacion-oscura;
+}

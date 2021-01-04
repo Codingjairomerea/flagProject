@@ -1,0 +1,36 @@
+$color-primario: #2b3743;
+$color-secundario: #202d36;
+$color-claro: #fcffff;
+$color-variacion: #434b52;
+$color-variacion-oscura: #1c1d1f;
+$color-variacion-clara: #fafafa;
+$color-variacion-clara2: #f3f3f3;
+$color-blanco: #fff;
+
+$Font1: "Lato", san-serif;
+$box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.2);
+
+@mixin flex-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@mixin font-size($size) {
+	font-size: $size;
+	font-size: calculateRem($size);
+	line-height: calculateRem(($size)*1.5)
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: $Font1;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}

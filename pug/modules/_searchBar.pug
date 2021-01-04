@@ -1,0 +1,22 @@
+section.search
+    div.searching-Bar(id="search-Bar")
+        div.searching-Bar_Input(id="search-Bar-Imput")
+            form(action="" method="get" target="_blank")
+                input(type="search" name="CountrySearch" placeholder="Search for a Country...")
+        div.searching-Bar_List(id="search-Bar-List")
+            div.searching-Bar_List_select(id="select")
+                div.searching-Bar_List_select_content
+                    span Filter by Region 
+                    i.fas(class="fa-angle-down")
+            div.searching-Bar_List_options(id="options")      
+                a(href="" class="option" id="option")
+                    div.hover-list.first
+                        span Africa
+                    div.hover-list
+                        span America
+                    div.hover-list
+                        span Asia
+                    div.hover-list
+                        span Europe
+                    div.hover-list.end
+                        span Oceania
