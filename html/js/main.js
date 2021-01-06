@@ -13,7 +13,16 @@ let optiontSelector = document.querySelector("#option");
 let popSelector = document.querySelector("#pop");
 let backButtonSelector = document.querySelector("#pop .popHeader .backButton");
 let contryListSelector = document.querySelectorAll("#country-list .country-list__container")
+let contryListDescriptionSelector = document.querySelectorAll("#country-list .country-list__container .country-list__container_description")
 let contryListH3Selector = document.querySelectorAll("#country-list .country-list__container .country-list__container_description h3")
+
+function boxContent (name, population, region, capital){
+    let HTMLtext = `<h3>${name}</h3>
+    <p>Population:<span>${population}</span></p>
+    <p>Region:<span>${region}</span></p>
+    <p>Capital:<span>${capital}</span></p>`;
+    return HTMLtext
+}
 
 select.addEventListener("click", ()=> {
     options.classList.toggle("active");
@@ -51,3 +60,19 @@ backButtonSelector.addEventListener("click", ()=>{
     popSelector.classList.toggle("active")
     contentSelector.classList.toggle("none")
 })
+
+async function fetchBoxContent (){
+    fetch("https://restcountries.eu/rest/v2/all")
+    .then(data => data.json())
+    .then(data => {
+        contryListSelector.forEach(function (v, i,) {
+            let name = data[i].name
+            let population = data[i].population;
+            let region = data[i].region;
+            let capital = data[i].capital;
+            let functionData = boxContent(name, population, region,capital);
+            contryListDescriptionSelector[i].innerHTML = functionData
+        })
+        }
+    );
+}
