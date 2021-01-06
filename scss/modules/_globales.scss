@@ -22,7 +22,15 @@ $box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.2);
 	line-height: calculateRem(($size)*1.5)
 }
 
-
+@mixin button ($pixelHeight:10px, $pixelWidth:20px) {
+    height: fit-content;
+    width: fit-content;
+    background-color: $color-primario;
+    border-radius: 5px;
+    padding: $pixelHeight $pixelWidth;
+    color: rgba($color-claro, .5);
+    box-shadow: $box-shadow;
+}
 
 * {
     margin: 0;

@@ -1,0 +1,142 @@
+.pop {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: $color-secundario;
+}
+
+.popHeader {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+}
+
+.popContent {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    justify-content: space-between;
+    &_Img{
+        width: 45%;
+        img {
+            width: 100%;
+        }
+    }
+    &_Text {
+        width: 45%;
+        padding: 5%;
+    }
+}
+
+.popContent_Text-Title {
+    margin-bottom: 5%;
+    h3 {
+        font-size: 35px;
+        color: $color-claro;
+    }
+}
+
+.backButton {
+    cursor: pointer;
+    @include button;
+    font-size: 12px;
+    i {
+        margin-right: 10px;
+    }
+}
+
+.borderButton {
+    @include button(5px,15px);
+    margin: 0 2.5%;
+    font-size: 10px;
+}
+
+
+.popContent_Text-Data {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10%;
+    &--Left {
+        p{
+            padding-bottom: 5px;
+            color: $color-claro;
+            span {
+                margin-left: 5px;
+                color: rgba($color-claro, .5);
+            }
+        }
+    }
+    &--Right {
+        p{
+            padding-bottom: 5px;
+            color: $color-claro;
+            span {
+                margin-left: 5px;
+                color: rgba($color-claro, .5);
+            }
+        }
+    }
+}
+
+.popContent_Text-BorderCountries {
+    display: flex;
+}
+
+.popContent_Text-Countries--BorderButtons {
+    display: flex;
+    font-size: 10px;
+}
+
+.popContent_Text-Countries--Title{
+    margin-right: 2.5%;
+    p {
+        color: $color-claro;
+    }
+}
+.pop.active {
+    display: block;
+}
+
+.pop.mode-White {
+    background-color: $color-variacion-clara;
+    .popHeader{
+        .backButton{
+            background-color: $color-blanco;
+            color: rgba($color-variacion-oscura, .5);
+        }
+    }
+    .popContent{
+        .popContent_Text{
+            .popContent_Text-Title{
+                h3 {
+                    color: $color-variacion-oscura;
+                }
+            }
+            .popContent_Text-Data{
+                .popContent_Text-Data--Left, .popContent_Text-Data--Right {
+                    p {
+                        color: $color-variacion-oscura;
+                        span {
+                            color: rgba($color-variacion-oscura, .5);
+                        }
+                    }
+                }
+            }
+            .popContent_Text-BorderCountries{
+                .popContent_Text-Countries--Title{
+                    p{
+                        color: $color-variacion-oscura;
+                    }
+                }
+                .popContent_Text-Countries--BorderButtons{
+                    .borderButton{
+                        background-color: $color-blanco;
+                        color: rgba($color-variacion-oscura, .5);
+                    }
+                }
+            }
+        }
+    }
+}

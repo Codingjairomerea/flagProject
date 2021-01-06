@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: $color-secundario;
+    position: relative;
     @include media (tablet){
         height: 20vh;
         flex-direction: initial;
@@ -44,7 +45,9 @@
         color: rgba($color-variacion-oscura, .5);
     }
 }
-
+.search-Bar-Form {
+    display: contents;
+}
 .searching-Bar_List{
     margin-top: 5%;
     margin-bottom: 5%;

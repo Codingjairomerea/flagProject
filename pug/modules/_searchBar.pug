@@ -4,19 +4,43 @@ section.search
             form(action="" method="get" target="_blank")
                 input(type="search" name="CountrySearch" placeholder="Search for a Country...")
         div.searching-Bar_List(id="search-Bar-List")
-            div.searching-Bar_List_select(id="select")
-                div.searching-Bar_List_select_content
-                    span Filter by Region 
-                    i.fas(class="fa-angle-down")
-            div.searching-Bar_List_options(id="options")      
-                a(href="" class="option" id="option")
-                    div.hover-list.first
-                        span Africa
-                    div.hover-list
-                        span America
-                    div.hover-list
-                        span Asia
-                    div.hover-list
-                        span Europe
-                    div.hover-list.end
-                        span Oceania
+            form(class=("search-Bar-Form") action="")
+                div.searching-Bar_List_select(id="select")
+                    div.searching-Bar_List_select_content
+                        span Filter by Region 
+                        i.fas(class="fa-angle-down")
+                div.searching-Bar_List_options(id="options")      
+                    a(href="" class="option" id="option")
+                        div.hover-list.first
+                            span Africa
+                        div.hover-list
+                            span America
+                        div.hover-list
+                            span Asia
+                        div.hover-list
+                            span Europe
+                        div.hover-list.end
+                            span Oceania
+                input(type="hidden" name="Region" id="inputRegion" value="")
+                            
+    .pop(id="pop")
+        .popHeader
+            +button("backButton","fas fa-arrow-left","Back")
+        .popContent
+            .popContent_Img
+                img(src="../design/Flag_Korea.png", alt="img")
+            .popContent_Text
+                .popContent_Text-Title
+                    h3 holi
+                .popContent_Text-Data
+                    .popContent_Text-Data--Left
+                        +parragraphAndSpan("5","Native Name","Population","Region","Sub Region","Capital")
+                    .popContent_Text-Data--Right
+                        +parragraphAndSpan("3","Top Level Domain","Courrencies","Languages")
+                .popContent_Text-BorderCountries
+                    .popContent_Text-Countries--Title
+                        p prueba
+                    .popContent_Text-Countries--BorderButtons
+                        +button("borderButton","no","b1")
+                        +button("borderButton","no","b2")
+                        +button("borderButton","no","b3")

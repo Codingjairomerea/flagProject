@@ -15,14 +15,20 @@
     }
 }
 
+.content.none {
+    display: none;
+}
+
 .country-list {
     display: flex;
-    margin-bottom: 20%;
+    margin-bottom: 10%;
+    margin-top: 10%;
     justify-content: center;
     &__container {
         width: 80%;
         border-radius: 5px;
         box-shadow: $box-shadow;
+        cursor: pointer;
         &_img {
             img {
                 border-radius: 5px 5px 0 0;

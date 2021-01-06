@@ -1,0 +1,44 @@
+-var title = "Where in the world?";
+
+mixin country-box (img, title, d1, d2, d3)
+    div.country-list(id="country-list")
+        div.country-list__container
+            div.country-list__container_img
+                img(src="../design/Flag_Korea.png", alt="flagImage")
+            div.country-list__container_description
+                h3= title
+                p Population:
+                    span= d1
+                p Region:
+                    span= d2
+                p Capital:
+                    span= d3
+
+mixin button (buttonName, icon, span)
+    if icon === "no"
+        div(class=buttonName)
+            span=span
+    else
+        div(class=buttonName)
+            i(class=icon)
+            span=span
+
+mixin parragraphAndSpan (cant, d1,d2,d3,d4,d5)
+    if cant === "5"
+        p=d1
+            span Prueba
+        p=d2
+            span Prueba
+        p=d3
+            span Prueba
+        p=d4
+            span Prueba
+        p=d5
+            span Prueba
+    else if cant === "3"
+        p=d1
+            span Prueba
+        p=d2
+            span Prueba
+        p=d3
+            span Prueba
