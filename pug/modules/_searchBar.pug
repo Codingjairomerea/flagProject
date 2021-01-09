@@ -2,7 +2,7 @@ section.search
     div.searching-Bar(id="search-Bar")
         div.searching-Bar_Input(id="search-Bar-Imput")
             form(action="" method="get" target="_blank")
-                input(type="search" name="CountrySearch" placeholder="Search for a Country...")
+                input(type="text" id="countrySearch" name="CountrySearch" placeholder="Search for a Country..." value="")
         div.searching-Bar_List(id="search-Bar-List")
             form(class=("search-Bar-Form") action="")
                 div.searching-Bar_List_select(id="select")
@@ -14,7 +14,7 @@ section.search
                         div.hover-list.first
                             span Africa
                         div.hover-list
-                            span America
+                            span Americas
                         div.hover-list
                             span Asia
                         div.hover-list
