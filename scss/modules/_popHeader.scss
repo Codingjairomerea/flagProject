@@ -85,8 +85,10 @@
 }
 
 .popContent_Text-Countries--BorderButtons {
-    display: flex;
+    display: grid;
     font-size: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 }
 
 .popContent_Text-Countries--Title{

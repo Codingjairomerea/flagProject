@@ -19,7 +19,21 @@ let contryListDescriptionSelector = document.querySelectorAll("#country-list .co
 let contryListH3Selector = document.querySelectorAll("#country-list .country-list__container .country-list__container_description h3");
 
 
-function popContent (imagen, name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, borders1, borders2, borders3) {
+function createBordersButton (array) {
+    for(i=0; i<array.length; i++){
+        
+    }
+};
+
+function getBorders(data) {
+    let border = "";
+    for (i=0; i<data.length;i++){
+        border += `<div class="borderButton"><span>${data[i]}</span></div>`
+    }
+    return border
+    }
+
+function popContent (imagen, name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, borders) {
     let HTMLText =
     `          <div class="popContent_Img"><img src="${imagen}" alt="img"/></div>
     <div class="popContent_Text">
@@ -42,17 +56,16 @@ function popContent (imagen, name, nativeName, population, region, subregion, ca
       </div>
       <div class="popContent_Text-BorderCountries">
         <div class="popContent_Text-Countries--Title">
-          <p>prueba</p>
+          <p>Border Countries:</p>
         </div>
         <div class="popContent_Text-Countries--BorderButtons">
-          <div class="borderButton"><span>${borders1}</span></div>
-          <div class="borderButton"><span>${borders2}</span></div>
-          <div class="borderButton"><span>${borders2}</span></div>
+        ${getBorders(borders)}
         </div>
       </div>
     </div>`
     return HTMLText
 }
+
 
 function boxContent (name, population, region, capital,imagen){
     let HTMLtext = 
@@ -70,6 +83,15 @@ function boxContent (name, population, region, capital,imagen){
     return HTMLtext
 };
 
+function getLanguages(data) {
+    let lan = "";
+    for (i=0; i<data.length;i++){
+        lan += `${data[i].name}, `
+    }
+    lan = lan.slice(0, lan.length-2)
+    return lan
+    }
+
 async function activePop () {
     contryListSelector = document.querySelectorAll("#country-list .country-list__container");
     contryListSelector.forEach((country) => {
@@ -77,8 +99,14 @@ async function activePop () {
         popContentSelector.innerHTML = "";
         popSelector.classList.toggle("active")
         contentSelector.classList.toggle("none")
-        let valueName = e.path[2].childNodes[3].firstElementChild.innerHTML.toLowerCase()
-        let bd = await fetch(`https://restcountries.eu/rest/v2/name/${valueName}`);
+        function getPopContet () {
+            if (e.path[2].childNodes.length == 5) {
+                return e.path[2].childNodes[3].firstElementChild.innerHTML.toLowerCase()}
+            else {
+                return e.path[2].childNodes[2].previousElementSibling.childNodes[3].firstElementChild.innerHTML.toLowerCase()}
+        } 
+        
+        let bd = await fetch(`https://restcountries.eu/rest/v2/name/${getPopContet()}`);
         let bdJson = await bd.json();
         let name = bdJson[0].name;
         let imagen = bdJson[0].flag;
@@ -89,11 +117,14 @@ async function activePop () {
         let capital = bdJson[0].capital;
         let topLevelDomain = bdJson[0].topLevelDomain[0];
         let currencies = bdJson[0].currencies[0].code;
-        let languages = bdJson[0].languages[0].name;
+        let lan = bdJson[0].languages
+        let languages = getLanguages(lan)
         let borders1 = bdJson[0].borders[0];
         let borders2 = bdJson[0].borders[1];
         let borders3 = bdJson[0].borders[2];
-        popContentSelector.innerHTML = popContent (imagen, name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, borders1, borders2, borders3)
+        let borders = bdJson[0].borders
+        console.log(bdJson[0].borders)
+        popContentSelector.innerHTML = popContent (imagen, name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, borders)
     })
 });
 }
