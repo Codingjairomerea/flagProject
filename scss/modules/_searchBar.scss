@@ -40,6 +40,7 @@
     background-color: $color-variacion-clara;
     input {
         background-color: $color-blanco;
+        color: rgba($color-variacion-oscura, .5);
     }
     input::placeholder {
         color: rgba($color-variacion-oscura, .5);
