@@ -102,12 +102,14 @@ async function activePop () {
         popSelector.classList.toggle("active")
         contentSelector.classList.toggle("none")
         searchBarSelector.classList.toggle("none")
-        console.log(e.path[2].childNodes[2])
         function getPopContet () {
             if (e.path[2].childNodes.length == 5) {
                 return e.path[2].childNodes[3].firstElementChild.innerHTML.toLowerCase()}
             else if (e.path[2].childNodes.length == 9){
                 return e.path[2].childNodes[1].innerHTML.toLowerCase()
+            }
+            else if (e.path[2].childNodes.length == 2){
+                return e.target.childNodes[3].childNodes[1].innerHTML.toLowerCase()
             }
             else {
                 return e.path[2].childNodes[2].previousElementSibling.childNodes[3].firstElementChild.innerHTML.toLowerCase()}
