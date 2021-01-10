@@ -20,10 +20,12 @@ let contryListSelector = document.querySelectorAll("#country-list .country-list_
 let contryListDescriptionSelector = document.querySelectorAll("#country-list .country-list__container .country-list__container_description");
 let contryListH3Selector = document.querySelectorAll("#country-list .country-list__container .country-list__container_description h3");
 
-function prueba() {
-    return false
+searchBarForm.addEventListener("submit",(e)=>{
+    searchBarForm.blur()
     searchCountry.blur()
-}
+    e.preventDefault()
+    console.log("que pasho")
+ })
 
 function getBorders(data) {
     let border = "";
