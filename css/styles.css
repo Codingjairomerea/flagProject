@@ -486,9 +486,16 @@ a {
 }
 .country-list__container {
   width: 80%;
+  height: -webkit-fit-content;
+  height: fit-content;
   border-radius: 5px;
   box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+}
+@media only screen and (min-width: 768px) {
+  .country-list__container {
+    height: auto;
+  }
 }
 .country-list__container_img img {
   border-radius: 5px 5px 0 0;

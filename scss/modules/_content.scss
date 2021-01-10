@@ -27,9 +27,13 @@
     justify-content: center;
     &__container {
         width: 80%;
+        height: fit-content;
         border-radius: 5px;
         box-shadow: $box-shadow;
         cursor: pointer;
+        @include media (tablet){
+            height: auto;
+        }
         &_img {
             img {
                 border-radius: 5px 5px 0 0;
