@@ -1,6 +1,7 @@
 let listSelector = document.querySelector("#select");
 let listSpanSelector = document.querySelector("#select .searching-Bar_List_select_content span");
 let inputList = document.querySelector("#inputRegion");
+let searchBarForm = document.querySelector("#searchBarForm");
 let searchCountry = document.querySelector("#countrySearch");
 let optionsSelector = document.querySelector("#options");
 let modeSelector = document.querySelector("#mode");
@@ -19,6 +20,10 @@ let contryListSelector = document.querySelectorAll("#country-list .country-list_
 let contryListDescriptionSelector = document.querySelectorAll("#country-list .country-list__container .country-list__container_description");
 let contryListH3Selector = document.querySelectorAll("#country-list .country-list__container .country-list__container_description h3");
 
+function prueba() {
+    return false
+    searchCountry.blur()
+}
 
 function getBorders(data) {
     let border = "";
