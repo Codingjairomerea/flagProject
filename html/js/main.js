@@ -215,7 +215,7 @@ document.querySelectorAll(".hover-list").forEach( async (opcion) => {
             getHTMLwithCountrys(bdJson);
             
             const searchingText = async (e) => {
-                searchValue = e.target.valuetoLowerCase();
+                searchValue = e.target.value.toLowerCase();
                 contentSelector.innerHTML = "";
                 try {
                     getCountriesByWrite(bdJson, searchValue);
