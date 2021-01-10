@@ -6,6 +6,7 @@ let optionsSelector = document.querySelector("#options");
 let modeSelector = document.querySelector("#mode");
 let headerSelector = document.querySelector("#header");
 let moonSelector = document.querySelector("#moon");
+let modeTextSelector = document.querySelector("#mode span");
 let searchBarSelector = document.querySelector("#search-Bar");
 let searchBarListSelector = document.querySelector("#search-Bar-List");
 let searchBarImputSelector = document.querySelector("#search-Bar-Imput");
@@ -18,12 +19,6 @@ let contryListSelector = document.querySelectorAll("#country-list .country-list_
 let contryListDescriptionSelector = document.querySelectorAll("#country-list .country-list__container .country-list__container_description");
 let contryListH3Selector = document.querySelectorAll("#country-list .country-list__container .country-list__container_description h3");
 
-
-function createBordersButton (array) {
-    for(i=0; i<array.length; i++){
-        
-    }
-};
 
 function getBorders(data) {
     let border = "";
@@ -42,16 +37,16 @@ function popContent (imagen, name, nativeName, population, region, subregion, ca
       </div>
       <div class="popContent_Text-Data">
         <div class="popContent_Text-Data--Left">
-          <p>Native Name<span>${nativeName}</span></p>
-          <p>Population<span>${population}</span></p>
-          <p>Region<span>${region}</span></p>
-          <p>Sub Region<span>${subregion}</span></p>
-          <p>Capital<span>${capital}</span></p>
+          <p>Native Name:<span>${nativeName}</span></p>
+          <p>Population:<span>${population}</span></p>
+          <p>Region:<span>${region}</span></p>
+          <p>Sub Region:<span>${subregion}</span></p>
+          <p>Capital:<span>${capital}</span></p>
         </div>
         <div class="popContent_Text-Data--Right">
-          <p>Top Level Domain<span>${topLevelDomain}</span></p>
-          <p>Currencies<span>${currencies}</span></p>
-          <p>Languages<span>${languages}</span></p>
+          <p>Top Level Domain:<span>${topLevelDomain}</span></p>
+          <p>Currencies:<span>${currencies}</span></p>
+          <p>Languages:<span>${languages}</span></p>
         </div>
       </div>
       <div class="popContent_Text-BorderCountries">
@@ -99,6 +94,7 @@ async function activePop () {
         popContentSelector.innerHTML = "";
         popSelector.classList.toggle("active")
         contentSelector.classList.toggle("none")
+        searchBarSelector.classList.toggle("none")
         function getPopContet () {
             if (e.path[2].childNodes.length == 5) {
                 return e.path[2].childNodes[3].firstElementChild.innerHTML.toLowerCase()}
@@ -119,11 +115,7 @@ async function activePop () {
         let currencies = bdJson[0].currencies[0].code;
         let lan = bdJson[0].languages
         let languages = getLanguages(lan)
-        let borders1 = bdJson[0].borders[0];
-        let borders2 = bdJson[0].borders[1];
-        let borders3 = bdJson[0].borders[2];
         let borders = bdJson[0].borders
-        console.log(bdJson[0].borders)
         popContentSelector.innerHTML = popContent (imagen, name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, borders)
     })
 });
@@ -150,7 +142,18 @@ listSelector.addEventListener("click", ()=> {
     options.classList.toggle("active");
 });
 
-mode.addEventListener("click", () =>{
+function changeTextMode (text) {
+    let textMode = "";
+    if(text === "White Mode"){
+        textMode = "Dark Mode"
+    }
+    else{
+        textMode = "White Mode"
+    }
+    modeTextSelector.innerHTML = textMode
+}
+
+mode.addEventListener("click", (e) =>{
     headerSelector.classList.toggle("mode-White")
     moonSelector.classList.toggle("fas")
     moonSelector.classList.toggle("far")
@@ -160,6 +163,7 @@ mode.addEventListener("click", () =>{
     contentSelector.classList.toggle("mode-white-content")
     optiontSelector.classList.toggle("mode-White-List")
     popSelector.classList.toggle("mode-White")
+    changeTextMode(e.target.innerHTML)
 } );
 
 async function getCountriesByWrite (bd, searchValue) {
@@ -180,23 +184,29 @@ async function getCountriesByWrite (bd, searchValue) {
 }
 
 
+function getPopContet (e, array) {
+    if (array.length == 12) {
+        return e.target.innerHTML}
+    else {
+        return e.path[0].innerText}
+    }
 
-
-
-document.querySelectorAll(".hover-list span").forEach( async (opcion) => {
+document.querySelectorAll(".hover-list").forEach( async (opcion) => {
     opcion.addEventListener("click", async (e) => {
         e.preventDefault();
-        let Imputlowercase = "filter by region ";
+        let Imputlowercase = "";
         let movingName = listSpanSelector.innerHTML;
-        listSpanSelector.innerHTML = e.currentTarget.innerHTML;
-        inputList.value = e.currentTarget.innerHTML;
-        e.currentTarget.innerHTML = movingName;
-        Imputlowercase = inputList.value.toLowerCase()
+        let selectItem = getPopContet(e, e.path)
+        console.log(e.path)
+        inputList.value = movingName;
+        listSpanSelector.innerHTML = selectItem;
+        e.currentTarget.innerText = movingName
+        Imputlowercase = selectItem.toLowerCase()
         options.classList.toggle("active");
         contentSelector.innerHTML = "";
         try {
             let bd = "";
-            if (Imputlowercase === "filter by region "){
+            if (Imputlowercase === "filter by region"){
                 bd = await fetch("https://restcountries.eu/rest/v2/all")
             }
             else bd =await fetch(`https://restcountries.eu/rest/v2/region/${Imputlowercase}`)
@@ -228,6 +238,7 @@ document.querySelectorAll(".hover-list span").forEach( async (opcion) => {
 backButtonSelector.addEventListener("click", ()=>{
     popSelector.classList.toggle("active")
     contentSelector.classList.toggle("none")
+    searchBarSelector.classList.toggle("none")
 });
 
 

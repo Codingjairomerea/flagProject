@@ -100,6 +100,10 @@ a {
   color: rgba(252, 255, 255, 0.5);
 }
 
+.searching-Bar.none {
+  display: none;
+}
+
 .searching-Bar.mode-White-Search {
   background-color: #fafafa;
 }
@@ -204,7 +208,8 @@ a {
   display: none;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: auto;
+  min-height: 70%;
   background-color: #202d36;
 }
 
@@ -213,31 +218,72 @@ a {
   display: flex;
   align-items: center;
   margin-left: 5%;
+  margin: 10%;
+}
+@media only screen and (min-width: 768px) {
+  .popHeader {
+    margin: 5%;
+  }
 }
 
 .popContent {
   display: flex;
+  flex-direction: column;
   margin-left: 5%;
   margin-right: 5%;
   justify-content: space-between;
 }
+@media only screen and (min-width: 768px) {
+  .popContent {
+    flex-direction: initial;
+  }
+}
 .popContent_Img {
-  width: 45%;
+  width: 100%;
+}
+@media only screen and (min-width: 768px) {
+  .popContent_Img {
+    width: 50%;
+  }
 }
 .popContent_Img img {
   width: 100%;
 }
 .popContent_Text {
-  width: 45%;
-  padding: 5%;
+  width: 100%;
+  padding: 2.5%;
+}
+@media only screen and (min-width: 768px) {
+  .popContent_Text {
+    width: 50%;
+    padding-top: 1%;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .popContent_Text {
+    width: 45%;
+    padding: 5% 2.5%;
+  }
 }
 
 .popContent_Text-Title {
-  margin-bottom: 5%;
+  margin-bottom: 8%;
+  margin-top: 10%;
+}
+@media only screen and (min-width: 768px) {
+  .popContent_Text-Title {
+    margin-bottom: 5%;
+    margin-top: 0;
+  }
 }
 .popContent_Text-Title h3 {
-  font-size: 35px;
+  font-size: 16px;
   color: #fcffff;
+}
+@media only screen and (min-width: 1200px) {
+  .popContent_Text-Title h3 {
+    font-size: 35px;
+  }
 }
 
 .backButton {
@@ -273,42 +319,103 @@ a {
 
 .popContent_Text-Data {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-bottom: 10%;
+}
+@media only screen and (min-width: 375px) {
+  .popContent_Text-Data {
+    flex-direction: initial;
+  }
 }
 .popContent_Text-Data--Left p {
   padding-bottom: 5px;
   color: #fcffff;
+  font-size: 12px;
+}
+@media only screen and (min-width: 1200px) {
+  .popContent_Text-Data--Left p {
+    font-size: 16px;
+  }
 }
 .popContent_Text-Data--Left p span {
   margin-left: 5px;
   color: rgba(252, 255, 255, 0.5);
+  font-size: 12px;
+}
+@media only screen and (min-width: 1200px) {
+  .popContent_Text-Data--Left p span {
+    font-size: 16px;
+  }
+}
+.popContent_Text-Data--Right {
+  margin-top: 10%;
+}
+@media only screen and (min-width: 375px) {
+  .popContent_Text-Data--Right {
+    margin-top: 0;
+  }
 }
 .popContent_Text-Data--Right p {
   padding-bottom: 5px;
   color: #fcffff;
+  font-size: 12px;
+}
+@media only screen and (min-width: 1200px) {
+  .popContent_Text-Data--Right p {
+    font-size: 16px;
+  }
 }
 .popContent_Text-Data--Right p span {
   margin-left: 5px;
   color: rgba(252, 255, 255, 0.5);
+  font-size: 12px;
+}
+@media only screen and (min-width: 1200px) {
+  .popContent_Text-Data--Right p span {
+    font-size: 16px;
+  }
 }
 
 .popContent_Text-BorderCountries {
   display: flex;
+  flex-direction: column;
+}
+@media only screen and (min-width: 768px) {
+  .popContent_Text-BorderCountries {
+    flex-direction: initial;
+  }
 }
 
 .popContent_Text-Countries--BorderButtons {
   display: grid;
   font-size: 10px;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  justify-items: center;
+  width: 65%;
+}
+@media only screen and (min-width: 375px) {
+  .popContent_Text-Countries--BorderButtons {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
 }
 
 .popContent_Text-Countries--Title {
   margin-right: 2.5%;
+  margin-bottom: 5%;
 }
 .popContent_Text-Countries--Title p {
   color: #fcffff;
+  font-size: 14px;
+}
+@media only screen and (min-width: 1200px) {
+  .popContent_Text-Countries--Title p {
+    font-size: 16px;
+  }
 }
 
 .pop.active {
@@ -333,6 +440,12 @@ a {
 }
 .pop.mode-White .popContent .popContent_Text .popContent_Text-BorderCountries .popContent_Text-Countries--Title p {
   color: #1c1d1f;
+  font-size: 12px;
+}
+@media only screen and (min-width: 1200px) {
+  .pop.mode-White .popContent .popContent_Text .popContent_Text-BorderCountries .popContent_Text-Countries--Title p {
+    font-size: 16px;
+  }
 }
 .pop.mode-White .popContent .popContent_Text .popContent_Text-BorderCountries .popContent_Text-Countries--BorderButtons .borderButton {
   background-color: #fff;
@@ -381,6 +494,21 @@ a {
   border-radius: 5px 5px 0 0;
   width: 100%;
   height: 180px;
+}
+@media only screen and (min-width: 425px) {
+  .country-list__container_img img {
+    height: 110px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .country-list__container_img img {
+    height: 140px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .country-list__container_img img {
+    height: 180px;
+  }
 }
 .country-list__container_description {
   padding: 8%;

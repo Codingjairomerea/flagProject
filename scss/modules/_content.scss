@@ -35,6 +35,15 @@
                 border-radius: 5px 5px 0 0;
                 width: 100%;
                 height: 180px;
+                @include media (mobile-l){
+                    height: 110px;
+                }
+                @include media (desktop-s){
+                    height: 140px;
+                }
+                @include media (desktop-m){
+                    height: 180px;
+                }
             }
         }
         &_description {

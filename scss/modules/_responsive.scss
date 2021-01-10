@@ -4,6 +4,10 @@
 
 @mixin media ($breakpoint) {  
 
+    @if $breakpoint == mobile-m {  
+      @media only screen and (min-width: 375px) { @content; }  
+    }
+      
     @if $breakpoint == mobile-l {  
       @media only screen and (min-width: 425px) { @content; }  
     }

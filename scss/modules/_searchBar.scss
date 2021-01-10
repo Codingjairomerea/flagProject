@@ -36,6 +36,10 @@
     }
 }
 
+.searching-Bar.none {
+    display: none;
+}
+
 .searching-Bar.mode-White-Search {
     background-color: $color-variacion-clara;
     input {
@@ -134,3 +138,4 @@
         background-color: $color-variacion-clara2;
     }
 }
+

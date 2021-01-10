@@ -2,7 +2,8 @@
     display: none;
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: auto;
+    min-height: 70%;
     background-color: $color-secundario;
 }
 
@@ -11,30 +12,57 @@
     display: flex;
     align-items: center;
     margin-left: 5%;
+    margin: 10%;
+    @include media (tablet) {
+        margin: 5%;
+    }
 }
 
 .popContent {
     display: flex;
+    flex-direction: column;
     margin-left: 5%;
     margin-right: 5%;
     justify-content: space-between;
+    @include media (tablet) {
+        flex-direction: initial;
+    }
     &_Img{
-        width: 45%;
+        width: 100%;
+        @include media (tablet){
+            width: 50%;
+        }
         img {
             width: 100%;
         }
     }
     &_Text {
-        width: 45%;
-        padding: 5%;
+        width: 100%;
+        padding: 2.5%;
+        @include media (tablet){
+            width: 50%;
+            padding-top: 1%;
+        }
+        @include media (desktop-s){
+            width: 45%;
+            padding: 5% 2.5%;
+        }
     }
 }
 
 .popContent_Text-Title {
-    margin-bottom: 5%;
+    margin-bottom: 8%;
+    margin-top: 10%;
+    @include media (tablet){
+        margin-bottom: 5%;
+        margin-top: 0;
+    }
     h3 {
-        font-size: 35px;
+        font-size: 16px;
         color: $color-claro;
+        @include media (desktop-m){
+            font-size: 35px;
+        }
     }
 }
 
@@ -56,25 +84,49 @@
 
 .popContent_Text-Data {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     margin-bottom: 10%;
+    @include media (mobile-m){
+        flex-direction: initial;
+    }
     &--Left {
         p{
             padding-bottom: 5px;
             color: $color-claro;
+            font-size: 12px;
+            @include media (desktop-m){
+                font-size: 16px;
+            }
             span {
                 margin-left: 5px;
                 color: rgba($color-claro, .5);
+                font-size: 12px;
+                @include media (desktop-m){
+                    font-size: 16px;
+                }
             }
         }
     }
     &--Right {
+        margin-top: 10%;
+        @include media (mobile-m){
+            margin-top: 0;
+        }
         p{
             padding-bottom: 5px;
             color: $color-claro;
+            font-size: 12px;
+            @include media (desktop-m){
+                font-size: 16px;
+            }
             span {
                 margin-left: 5px;
                 color: rgba($color-claro, .5);
+                font-size: 12px;
+                @include media (desktop-m){
+                    font-size: 16px;
+                }
             }
         }
     }
@@ -82,19 +134,36 @@
 
 .popContent_Text-BorderCountries {
     display: flex;
+    flex-direction: column;
+    @include media (tablet){
+        flex-direction: initial;
+    }
 }
 
 .popContent_Text-Countries--BorderButtons {
     display: grid;
     font-size: 10px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+    justify-items: center;
+    width: 65%;
+    @include media (mobile-m){
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr
+    }
 }
 
 .popContent_Text-Countries--Title{
     margin-right: 2.5%;
+    margin-bottom: 5%;
     p {
         color: $color-claro;
+        font-size: 14px;
+        @include media (desktop-m){
+            font-size: 16px;
+        }
     }
 }
 .pop.active {
@@ -130,6 +199,10 @@
                 .popContent_Text-Countries--Title{
                     p{
                         color: $color-variacion-oscura;
+                        font-size: 12px;
+                        @include media (desktop-m){
+                            font-size: 16px;
+                        }
                     }
                 }
                 .popContent_Text-Countries--BorderButtons{
