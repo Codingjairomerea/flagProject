@@ -98,9 +98,13 @@ async function activePop () {
         function getPopContet () {
             if (e.path[2].childNodes.length == 5) {
                 return e.path[2].childNodes[3].firstElementChild.innerHTML.toLowerCase()}
+            else if (e.path[2].childNodes.length == 9){
+                return e.path[2].childNodes[1].innerHTML.toLowerCase()
+            }
             else {
                 return e.path[2].childNodes[2].previousElementSibling.childNodes[3].firstElementChild.innerHTML.toLowerCase()}
         } 
+        console.log(e.path[2].childNodes)
         
         let bd = await fetch(`https://restcountries.eu/rest/v2/name/${getPopContet()}`);
         let bdJson = await bd.json();
@@ -197,7 +201,6 @@ document.querySelectorAll(".hover-list").forEach( async (opcion) => {
         let Imputlowercase = "";
         let movingName = listSpanSelector.innerHTML;
         let selectItem = getPopContet(e, e.path)
-        console.log(e.path)
         inputList.value = movingName;
         listSpanSelector.innerHTML = selectItem;
         e.currentTarget.innerText = movingName
