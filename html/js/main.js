@@ -108,11 +108,12 @@ async function activePop () {
             else if (e.path[2].childNodes.length == 9){
                 return e.path[2].childNodes[1].innerHTML.toLowerCase()
             }
-            else if (e.path[2].childNodes.length == 2){
-                return e.target.childNodes[3].childNodes[1].innerHTML.toLowerCase()
+            else if (e.path[2].childNodes.length == 3){
+                return e.path[2].childNodes[2].previousElementSibling.childNodes[3].firstElementChild.innerHTML.toLowerCase()
             }
             else {
-                return e.path[2].childNodes[2].previousElementSibling.childNodes[3].firstElementChild.innerHTML.toLowerCase()}
+                return e.target.childNodes[3].childNodes[1].innerHTML.toLowerCase()
+            }
         } 
         
         let bd = await fetch(`https://restcountries.eu/rest/v2/name/${getPopContet()}`);
