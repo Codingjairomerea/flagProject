@@ -111,7 +111,6 @@ async function activePop () {
             else {
                 return e.path[2].childNodes[2].previousElementSibling.childNodes[3].firstElementChild.innerHTML.toLowerCase()}
         } 
-        console.log(e.path[2].childNodes)
         
         let bd = await fetch(`https://restcountries.eu/rest/v2/name/${getPopContet()}`);
         let bdJson = await bd.json();
