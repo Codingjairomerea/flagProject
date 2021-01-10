@@ -232,6 +232,7 @@ a {
   margin-left: 5%;
   margin-right: 5%;
   justify-content: space-between;
+  min-height: 72vh;
 }
 @media only screen and (min-width: 768px) {
   .popContent {
