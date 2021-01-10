@@ -102,6 +102,7 @@ async function activePop () {
         popSelector.classList.toggle("active")
         contentSelector.classList.toggle("none")
         searchBarSelector.classList.toggle("none")
+        console.log(e.path[2].childNodes[2])
         function getPopContet () {
             if (e.path[2].childNodes.length == 5) {
                 return e.path[2].childNodes[3].firstElementChild.innerHTML.toLowerCase()}
