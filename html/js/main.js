@@ -25,7 +25,7 @@ searchBarForm.addEventListener("submit",(e)=>{
     searchCountry.blur()
     e.preventDefault()
     console.log("que pasho")
- })
+ });
 
 function getBorders(data) {
     let border = "";
@@ -33,7 +33,7 @@ function getBorders(data) {
         border += `<div class="borderButton"><span>${data[i]}</span></div>`
     }
     return border
-    }
+    };
 
 function popContent (imagen, name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, borders) {
     let HTMLText =
@@ -66,7 +66,7 @@ function popContent (imagen, name, nativeName, population, region, subregion, ca
       </div>
     </div>`
     return HTMLText
-}
+};
 
 
 function boxContent (name, population, region, capital,imagen){
@@ -92,7 +92,7 @@ function getLanguages(data) {
     }
     lan = lan.slice(0, lan.length-2)
     return lan
-    }
+    };
 
 async function activePop () {
     contryListSelector = document.querySelectorAll("#country-list .country-list__container");
@@ -103,16 +103,22 @@ async function activePop () {
         contentSelector.classList.toggle("none")
         searchBarSelector.classList.toggle("none")
         function getPopContet () {
-            if (e.path[2].childNodes.length == 5) {
-                return e.path[2].childNodes[3].firstElementChild.innerHTML.toLowerCase()}
-            else if (e.path[2].childNodes.length == 9){
-                return e.path[2].childNodes[1].innerHTML.toLowerCase()
-            }
-            else if (e.path[2].childNodes.length == 3){
-                return e.path[2].childNodes[2].previousElementSibling.childNodes[3].firstElementChild.innerHTML.toLowerCase()
-            }
-            else {
-                return e.target.childNodes[3].childNodes[1].innerHTML.toLowerCase()
+            switch (e.path == undefined ){
+                case true: 
+                    return e.currentTarget.childNodes[3].childNodes[1].innerHTML.toLowerCase()
+                    break;
+                case false: 
+                    if (e.path[2].childNodes.length == 5) {
+                        return e.path[2].childNodes[3].firstElementChild.innerHTML.toLowerCase()}
+                    else if (e.path[2].childNodes.length == 9){
+                        return e.path[2].childNodes[1].innerHTML.toLowerCase()
+                    }
+                    else if (e.path[2].childNodes.length == 3){
+                        return e.path[2].childNodes[2].previousElementSibling.childNodes[3].firstElementChild.innerHTML.toLowerCase()
+                    }
+                    else {
+                        return e.target.childNodes[3].childNodes[1].innerHTML.toLowerCase()
+                    }
             }
         } 
         
@@ -133,7 +139,7 @@ async function activePop () {
         popContentSelector.innerHTML = popContent (imagen, name, nativeName, population, region, subregion, capital, topLevelDomain, currencies, languages, borders)
     })
 });
-}
+};
 
 
 async function getHTMLwithCountrys (bd) {
@@ -147,7 +153,7 @@ async function getHTMLwithCountrys (bd) {
         contentSelector.insertAdjacentHTML("beforeend",functionData)
     }
     activePop ()
-}
+};
 
 
 
@@ -195,15 +201,19 @@ async function getCountriesByWrite (bd, searchValue) {
         else {
         }
     }
-}
+};
 
 
 function getPopContet (e, array) {
-    if (array.length == 12) {
-        return e.target.innerHTML}
+    if (array == undefined) {
+        return e.target.innerText
+    }
+    else if (array.length == 12) {
+        return e.target.innerHTML
+    }
     else {
         return e.path[0].innerText}
-    }
+    };
 
 document.querySelectorAll(".hover-list").forEach( async (opcion) => {
     opcion.addEventListener("click", async (e) => {
@@ -271,5 +281,5 @@ async function startingPage () {
         activePop ()
     };
     searchCountry.addEventListener("keyup", searchingText);
-}
+};
 startingPage()
